@@ -24,6 +24,14 @@ export default {
   created() {
     const pollId = this.$route.params.id;
     this.poll = polls.find(poll => poll.id === pollId);
+  },
+  methods: {
+    vote(optionIndex) {
+      if (this.poll && optionIndex >= 0 && optionIndex < this.poll.options.length) {
+        this.poll.votes[optionIndex]++;
+        console.log(this.poll);
+      }
+    }
   }
 };
 </script>
@@ -32,14 +40,11 @@ export default {
   <div class="poll">
     <div v-if="poll">
       {{ poll.question }}
-      <div v-for="option in poll.options">
         <ul>
-          <li>
-            {{ option }}
-          </li>
-        </ul>
-      </div>
-      <button @click="vote()">vote</button>
+        <li v-for="(option, index) in poll.options" :key="index">
+          <button @click="vote(index)">{{ option }}</button>
+        </li>
+      </ul>
     </div>
     <div v-else>
       <p>Le sondage n'a pas été trouvé.</p>
