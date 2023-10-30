@@ -8,7 +8,7 @@ import HelloWorld from './components/HelloWorld.vue'
   <header>
     <img alt="Poll logo" class="logo" src="@/assets/poll.svg" width="125" height="125" />
 
-    <div >
+    <div class="wrapper">
 
       <nav>
         <RouterLink to="/">Home</RouterLink>

@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { Poll } from '../models/PollModel';
-
-// ...
+import { PollService } from '../services/PollService';
 
 // Récupérer un sondage par ID
 export const getPollById = (req: Request, res: Response) => {
